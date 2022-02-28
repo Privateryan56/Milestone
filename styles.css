@@ -12,6 +12,7 @@ body {
     height: calc(32px * var(--pixel-size));
     overflow: hidden;
     position: relative;
+    margin: 4em auto;
     /*so this will make the shadow follow it regardless of where it faces or goes*/
 }
  
@@ -25,11 +26,24 @@ body {
     animation: moveSpritesheet 1s steps(4) infinite;
     /*putting the characters new found width which is changed by the value of the newly declared variable which changes the size of the whole animation*/
     width: calc(128px * var(--pixel-size));
+    position: absolute;
 }
 .pixelart{ /* so this is a class made just for rendering pixel art to come up nice and crisp. just put it in the proper class and it looks good*/
     image-rendering: pixelated;
 }
-
+/*these faces down here are relative to the sprite sheet itself */
+.face-right{
+    top: calc(-32px * var(--pixel-size));
+}
+.face-up {
+    top: calc(-64px * var(--pixel-size));
+ }
+ .face-left {
+    top: calc(-96px * var(--pixel-size));
+ }
+ .face-down {
+     top: calc(32px * var(--pixel-size));
+ }
 /* the translate3d -100 is to move it -100 of itself so if the sprite sheet is different you can use the same keyframe*/
 @keyframes moveSpritesheet {
     from {
