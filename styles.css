@@ -1,28 +1,28 @@
-/* so basically :root is a thing you do to declare a global css variable and we are using it to uh create pixel size and set it to 6 which resizes the .character container*/
+/* so basically :root is a thing you do to declare a global css variable and we are using it to uh create pixel size and set it to 6 which resizes the .character container
 :root {
     --pixel-size: 2;
 }
 body {
     background-color: #96ffc1;
 }
-.Character {
+/*.Character {
     width: calc(32px * var(--pixel-size));
     height: calc(32px * var(--pixel-size));
     overflow: hidden;
     position: relative;
     margin: 4em auto;
-    /*so this will make the shadow follow it regardless of where it faces or goes*/
+    so this will make the shadow follow it regardless of where it faces or goes
 }
  
 .Shadow {
     width: calc(32px * var(--pixel-size));
     height: calc(32px * var(--pixel-size));
-    position: absolute; /* so by making the shadow absolute we are making it absolute to the .Character Container and so it will follow it */
+    position: absolute; /* so by making the shadow absolute we are making it absolute to the .Character Container and so it will follow it 
 }
 
-.Sprite_Sheet /*this is basically the img that we use and .Character is the container we use to manipulate it*/{
-    /*animation: moveSpritesheet 0.6s steps(4) infinite;-- moved to walking variable bc we will use the animation when a key is pushed*/
-    /*putting the characters new found width which is changed by the value of the newly declared variable which changes the size of the whole animation*/
+.Sprite_Sheet /*this is basically the img that we use and .Character is the container we use to manipulate it{
+    animation: moveSpritesheet 0.6s steps(4) infinite;
+    /*putting the characters new found width which is changed by the value of the newly declared variable which changes the size of the whole animation
     width: calc(128px * var(--pixel-size));
     position: absolute;
     top: 0;
@@ -31,28 +31,17 @@ body {
 }
 
 
-.pixelart{ /* so this is a class made just for rendering pixel art to come up nice and crisp. just put it in the proper class and it looks good*/
+.pixelart{ so this is a class made just for rendering pixel art to come up nice and crisp. just put it in the proper class and it looks good
     image-rendering: pixelated;
 }
 
 
 
-/*these faces down here are relative to the sprite sheet itself */
-.Character[facing="right"] .Sprite_Sheet {
-    top: calc(-32px * var(--pixel-size));
-}
-.Character[facing = "up"] .Sprite_Sheet {
-    top: calc(-64px * var(--pixel-size));
- }
- .Character[facing = "left"]  .Sprite_Sheet {
-    top: calc(-96px * var(--pixel-size));
- }
- .Character[walking = "true"] .Sprite_Sheet {
-     top: calc(32px * var(--pixel-size));
- }
+these faces down here are relative to the sprite sheet itself 
 
 
-/* the translate3d -100 is to move it -100 of itself so if the sprite sheet is different you can use the same keyframe*/
+
+/* the translate3d -100 is to move it -100 of itself so if the sprite sheet is different you can use the same keyframe
 @keyframes moveSpritesheet {
     from {
         transform: translate3d(0px,0,0)
@@ -61,3 +50,4 @@ body {
         transform: translate3d(-100%,0,0);
     }
 }
+*/
