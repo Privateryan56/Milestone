@@ -18,7 +18,9 @@ body{
   transform: scale(3) translateY(50%);
 }
 
-
+.game-container canvas{
+  image-rendering: pixelated;
+}
 
 
 

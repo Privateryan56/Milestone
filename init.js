@@ -1,5 +1,5 @@
 ( function() {
-    const overworld = new overWorld({
+    const overworld = new OverWorld({
         element: document.querySelector(".game-container")
     });
     overworld.init();
