@@ -2,11 +2,11 @@
   box-sizing: border-box;
 }
 
-body{
-    background-color: orange;
-    padding: 0;
-    margin: 0;   
-    overflow: hidden;
+body {
+  background-color: orange;
+  padding: 0;
+  margin: 0;   
+  overflow: hidden;
 }
 
 .game-container {
