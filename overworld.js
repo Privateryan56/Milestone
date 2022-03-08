@@ -25,9 +25,9 @@ class OverWorld {
 
 
             //Draw game Objexts
-            Object.values(this.map.gameObjects).forEach(object =>{
+    Object.values(this.map.gameObjects).forEach(object =>{
               object.sprite.draw(this.ctx, cameraPerson);
-            })
+        })
 
             //draw Upper map
             this.map.drawUpperImage(this.ctx,cameraPerson);

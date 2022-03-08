@@ -25,9 +25,7 @@ class OverworldMap {
 
    isSpaceTaken(currentX, currentY, direction) {
        const {x,y} = utils.nextPlace(currentX, currentY, direction);
-       
-       return this.walls [`${x}, ${y}`] || false
-
+       return this.walls [`${x},${y}`] || false
    }
 
 
@@ -53,14 +51,43 @@ window.OverworldMaps = {
                 src: "./assets/objects/box.png"
             })
         },
-     walls: {
-      [utils.asGridCoords(7,6)] : true,
-      [utils.asGridCoords(8,6)] : true,
-      [utils.asGridCoords(7,7)] : true,
-      [utils.asGridCoords(8,7)] : true,
-    }
-    }
-
-
-
+        walls: {
+          //dynamic keys will evaluate to string 
+         [utils.asGridCoords(7,6)]: true,
+         [utils.asGridCoords(8,6)]: true,
+         [utils.asGridCoords(7,7)]: true,
+         [utils.asGridCoords(8,7)]: true,
+         [utils.asGridCoords(0,6)]: true,
+         [utils.asGridCoords(0,5)]: true,
+         [utils.asGridCoords(0,4)]: true,
+         [utils.asGridCoords(0,7)]: true,
+         [utils.asGridCoords(0,8)]: true,
+         [utils.asGridCoords(0,9)]: true,
+         [utils.asGridCoords(1,10)]: true,
+         [utils.asGridCoords(2,10)]: true,
+         [utils.asGridCoords(3,10)]: true,
+         [utils.asGridCoords(4,10)]: true,
+         [utils.asGridCoords(5,11)]: true,
+         [utils.asGridCoords(6,10)]: true,
+         [utils.asGridCoords(7,10)]: true,
+         [utils.asGridCoords(8,10)]: true,
+         [utils.asGridCoords(9,10)]: true,
+         [utils.asGridCoords(10,10)]: true,
+         [utils.asGridCoords(11,9)]: true,
+         [utils.asGridCoords(11,8)]: true,
+         [utils.asGridCoords(11,7)]: true,
+         [utils.asGridCoords(11,6)]: true,
+         [utils.asGridCoords(11,5)]: true,
+         [utils.asGridCoords(11,4)]: true,
+         [utils.asGridCoords(10,3)]: true,
+         [utils.asGridCoords(9,3)]: true,
+         [utils.asGridCoords(8,4)]: true,
+         [utils.asGridCoords(6,4)]: true,
+         [utils.asGridCoords(5,3)]: true,
+         [utils.asGridCoords(4,4)]: true,
+         [utils.asGridCoords(3,4)]: true,
+         [utils.asGridCoords(2,3)]: true,
+         [utils.asGridCoords(1,3)]: true,
+       },
+      },
 }

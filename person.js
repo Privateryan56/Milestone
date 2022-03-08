@@ -12,15 +12,17 @@ class Person extends GameObject {
             "left": ["x", -1],
             "right":[ "x", 1],
         }
-
+        
     }
     update(state) {
+        if (this.movingProgressRemaining > 0) {
         this.updatePosition();
+        }
         this.updateSprite(state);
 
         if(this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow){
             this.direction = state.arrow; 
-           console.log( state.map.isSpaceTaken(this.x , this.y , this.direction) );
+           console.log( state.map.isSpaceTaken(this.x, this.y, this.direction));
             this.movingProgressRemaining = 16;
         }
     }
@@ -28,12 +30,11 @@ class Person extends GameObject {
 
 
     updatePosition() {
-        if (this.movingProgressRemaining > 0) {
             const [property, change] = this.directionUpdate[this.direction] ;
             this[property] += change;
             this.movingProgressRemaining -= 1;
         }
-    }
+    
 
 
     updateSprite(state) {
@@ -47,6 +48,5 @@ class Person extends GameObject {
           this.sprite.setAnimation("walk-"+this.direction);
         }
       }
+    }
     
-
-}
