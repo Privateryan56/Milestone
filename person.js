@@ -1,7 +1,7 @@
 class Person extends GameObject {
     constructor(config) {
         super(config);
-        this.movingProgressRemaining =0; //this translates to pixels and i will probably add this to npcs and such later on down the road
+        this.movingProgressRemaining =0; //this translates to pixels that thye mobe and i will probably add this to npcs and such later on down the road
 
 
         this.isPlayerControlled = config.isPlayerControlled || false;
@@ -20,6 +20,7 @@ class Person extends GameObject {
 
         if(this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow){
             this.direction = state.arrow; 
+           console.log( state.map.isSpaceTaken(this.x , this.y , this.direction) );
             this.movingProgressRemaining = 16;
         }
     }

@@ -29,7 +29,8 @@ class Sprite {
     this.currentAnimationFrame = 0;
 
         //cadence for the frames
-    this.animationFrameLimit = config.animationFrameLimit || 8;
+    this.animationFrameLimit = config.animationFrameLimit || 8; //animation speed
+    
     this.animationFrameProgress = this.animationFrameLimit;
 
         //references the game object
