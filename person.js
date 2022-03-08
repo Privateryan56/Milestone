@@ -17,17 +17,35 @@ class Person extends GameObject {
     update(state) {
         if (this.movingProgressRemaining > 0) {
         this.updatePosition();
-        }
-        this.updateSprite(state);
+   }else { 
+    //ready for more walk cases
 
-        if(this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow){
-            this.direction = state.arrow; 
-           console.log( state.map.isSpaceTaken(this.x, this.y, this.direction));
-            this.movingProgressRemaining = 16;
-        }
+
+
+    //ready for player input
+     if(this.isPlayerControlled && state.arrow){
+        this.startBehavior(state, {
+           type: "walk",
+           direction: state.arrow
+ })
+}
+   this.updateSprite(state);
+
     }
-
-
+ }
+    
+    // fire a walk command without use of user input possibly for future npcs
+    startBehavior(state,behavior) {
+      //setting character direction to whatever behavior has be nset to 
+      this.direction = behavior.direction; 
+      if(behavior.type === "walk"){
+        //willstop if space is not free or "true"
+      if (state.map.isSpaceTaken(this.x, this.y, this.direction)){
+        return;
+      }
+       this.movingProgressRemaining = 16;
+      }
+    }
 
     updatePosition() {
             const [property, change] = this.directionUpdate[this.direction] ;
@@ -37,16 +55,14 @@ class Person extends GameObject {
     
 
 
-    updateSprite(state) {
-
-        if (this.isPlayerControlled && this.movingProgressRemaining === 0 && !state.arrow) {
-          this.sprite.setAnimation("idle-"+this.direction);
-          return;
-        }
-    
-        if (this.movingProgressRemaining > 0) {
-          this.sprite.setAnimation("walk-"+this.direction);
-        }
+    updateSprite() {
+      
+      if (this.movingProgressRemaining > 0) {
+        this.sprite.setAnimation("walk-"+this.direction);
+        return
       }
-    }
+          this.sprite.setAnimation("idle-"+this.direction);
+   }
+  }
+    
     
