@@ -144,8 +144,20 @@ window.OverworldMaps = {
                     {type: "stand", direction: "up", time: 800},
                     { type: "walk", direction: "up" },
                     { type: "walk", direction: "right" },
-                    { type: "walk", direction: "down"},
+                    {type:"walk", direction:"down"},
                 ],
+                talking: [
+                    {
+                        events: [
+                    {type: "textMessage", text:"the way out is in the closet", faceHero: "npcB"},
+                    {type: "textMessage", text:"Weirdo why are you still here??"},
+                    {type: "textMessage", text:"Back up bro i gotta count these tiles"},
+                    { who: "hero", type: "walk", direction: "right"},
+                    { who: "hero", type: "walk", direction: "right"},
+                        ]
+                    },
+
+                ]
             }),
         },
         walls: {
