@@ -222,7 +222,8 @@ window.OverworldMaps = {
                 {
                     events:[
                         { type: "textMessage", text: "There's a book on how to solve Skill Issues in video games"},
-                        { type: "textMessage", text: "You open it and it says 'Get good chump'"}
+                        { type: "textMessage", text: "You open it and it says 'Get good chump'"},
+                        { type: "textMessage", text: "You've never been one to argue with the wisdom that books can provide, So you take it at face value"}
 
                     ]
                 },
