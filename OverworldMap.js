@@ -213,19 +213,21 @@ window.OverworldMaps = {
             [utils.asGridCoords(7,4)]:[
                 {
                     events: [
-                        /*{who:"npcA", type:"walk", direction:"right"},
-                        {who:"npcA", type:"walk", direction:"right"},
-                        {who:"npcA", type:"walk", direction:"up"},
-                        {who:"npcA", type:"walk", direction:"up"},
-                        {who:"npcA", type:"walk", direction:"up"},
-                        {who:"npcA", type:"walk", direction:"up"},
-                        {who:"npcA", type:"walk", direction:"left"},
-                        {who:"npcA", type:"walk", direction:"left"}, */
+                        
                         { type:"textMessage", text:"You win"},
                     ]
                 }
-            ] 
-        }
+            ] ,
+            [utils.asGridCoords(3,4)] :[
+                {
+                    events:[
+                        { type: "textMessage", text: "There's a book on how to solve Skill Issues in video games"},
+                        { type: "textMessage", text: "You open it and it says 'Get good chump'"}
+
+                    ]
+                },
+            ]
+        },
 
       },
      
