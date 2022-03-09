@@ -33,7 +33,7 @@ class GameObject {
   async doBehaviorEvent(map){
 
     //basically if there is a cutscene going on, dont fire off the global behaviors 
-    if(map.isCutscenePlaying || this.behaviorLoop.length === 0){
+    if(map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding){
       return
     }
     //setting up event with relevant info
