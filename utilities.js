@@ -19,6 +19,16 @@ const utils = {
         y += size;
       }
       return {x,y};
+    },
+    // short hand for person.js 
+    emitEvent( name, detail){
+      //if 0 then we finished the walk and will know its done moving
+              //will help with hero check moving and will do a check to do like cutscenes n such
+              // CustomEvent is a nativeJS function where in you basically create an addevent listener that can be used like any other addevent listener its crazy
+              const event = new CustomEvent(name, {
+                detail
+              });
+              document.dispatchEvent(event);
     }
-    
+
   }

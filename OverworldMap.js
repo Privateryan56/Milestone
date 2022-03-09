@@ -7,6 +7,8 @@ class OverworldMap {
 
         this.upperImage = new Image();
         this.upperImage.src= config.upperSrc;//rooftops and stuff above the characters
+
+        this.isCutscenePlaying = false;
     }
 
     drawLowerImage(ctx, cameraPerson) {
@@ -29,6 +31,50 @@ class OverworldMap {
    }
 
 
+   async startCutscene(events) {
+    this.isCutscenePlaying = true;
+
+    for (let i=0; i<events.length; i++) {
+      const eventHandler = new OverworldEvent({
+        event: events[i],
+        map: this,
+      })
+      await eventHandler.init();
+    }
+
+    this.isCutscenePlaying = false;
+  }
+
+
+
+mountObjects() {
+    Object.keys(this.gameObjects).forEach (key =>{
+        let object = this.gameObjects[key];
+        object.id = key;
+        // determine if this object should actually mount
+        object.mount(this)
+    })
+}
+//
+// this is for npcs so you cannot run into them or through them
+
+   addWall(x,y) {
+       this.walls [`${x},${y}`] = true;
+   }
+
+   // if a wall is at this position, delete the "wall"
+   removeWall(x,y) {
+    delete this.walls [`${x},${y}`] 
+}
+
+
+moveWall(wasX, wasY, direction) {
+    this.removeWall(wasX, wasY)
+    const {x,y} = utils.nextPlace(wasX, wasY, direction);
+    this.addWall(x,y)
+}
+
+
 
 
 
@@ -45,14 +91,35 @@ window.OverworldMaps = {
                 x: utils.withGrid(5),
                 y: utils.withGrid(6),
             }),
-            box: new GameObject({
-                x: utils.withGrid(9),
-                y: utils.withGrid(7),
-                src: "./assets/objects/box.png"
-            })
+            npcA: new Person({
+                x: utils.withGrid(7),
+                y: utils.withGrid(9),
+                src: "./assets/sprite/npc4.png",
+                behaviorLoop: [
+                    {type: "stand", direction: "left", time:800},
+                    {type: "stand", direction: "down", time:800},
+                    {type: "stand", direction: "right", time:800},
+                    {type: "stand", direction: "up", time:800},
+                ]
+          
+            }),
+            npcB: new Person({
+                x: utils.withGrid(3),
+                y: utils.withGrid(6),
+                src: "./assets/sprite/npc3.png" ,
+                // this is a loop that the npc will perform regardless of user input and will repeat
+                behaviorLoop: [
+                    { type: "walk", direction: "left"},
+                    {type: "stand", direction: "up", time: 800},
+                    { type: "walk", direction: "up" },
+                    { type: "walk", direction: "right" },
+                    { type: "walk", direction: "down"},
+                ],
+            }),
         },
         walls: {
-          //dynamic keys will evaluate to string 
+          //dynamic keys will evaluate to string. basically its coordinates on the map that will evaluate to a true or false statement 
+          //and will determine if the space is empty or not and that is based on these "walls"
          [utils.asGridCoords(7,6)]: true,
          [utils.asGridCoords(8,6)]: true,
          [utils.asGridCoords(7,7)]: true,
@@ -84,10 +151,11 @@ window.OverworldMaps = {
          [utils.asGridCoords(8,4)]: true,
          [utils.asGridCoords(6,4)]: true,
          [utils.asGridCoords(5,3)]: true,
-         [utils.asGridCoords(4,4)]: true,
-         [utils.asGridCoords(3,4)]: true,
+         [utils.asGridCoords(4,3)]: true,
+         [utils.asGridCoords(3,3)]: true,
          [utils.asGridCoords(2,3)]: true,
          [utils.asGridCoords(1,3)]: true,
        },
       },
+     
 }
