@@ -4,6 +4,7 @@ class OverworldMap {
         this.walls = config.walls || {}
         this.lowerImage = new Image();
         this.lowerImage.src= config.lowerSrc; //tiles
+        this.cutsceneSpaces = config.cutsceneSpaces || {}
 
         this.upperImage = new Image();
         this.upperImage.src= config.upperSrc;//rooftops and stuff above the characters
@@ -50,18 +51,26 @@ class OverworldMap {
 
   }
 
-checkForActionCutscene() {
-    const hero = this.gameObjects["hero"];
-    //we are gonna use the utils.nextPlace to determine if there is a person to talk to infront of the player controlled character
-    const nextCoords = utils.nextPlace(hero.x, hero.y, hero.direction);
-    const match = Object.values(this.gameObjects).find(object =>{
-        return `${object.x}, ${object.y}` === `${nextCoords.x}, ${nextCoords.y}`
-    });
-    if (!this.isCutscenePlaying && match && match.talking.length) {
-        this.startCutscene(match.talking[0].events)
+  
+  checkForActionCutscene() {
+      const hero = this.gameObjects["hero"];
+      //we are gonna use the utils.nextPlace to determine if there is a person to talk to infront of the player controlled character
+      const nextCoords = utils.nextPlace(hero.x, hero.y, hero.direction);
+      const match = Object.values(this.gameObjects).find(object =>{
+          return `${object.x}, ${object.y}` === `${nextCoords.x}, ${nextCoords.y}`
+        });
+        if (!this.isCutscenePlaying && match && match.talking.length) {
+            this.startCutscene(match.talking[0].events)
+        }
     }
- }
-
+    
+    checkForFootstepCutscene() {
+        const hero = this.gameObjects["hero"];
+        const match = this.cutsceneSpaces[ `${hero.x},${hero.y}` ];
+        if (!this.isCutscenePlaying && match) {
+          this.startCutscene( match[0].events )
+        }
+      }
 
 
 mountObjects() {
@@ -199,6 +208,25 @@ window.OverworldMaps = {
          [utils.asGridCoords(2,3)]: true,
          [utils.asGridCoords(1,3)]: true,
        },
+
+        cutsceneSpaces:{
+            [utils.asGridCoords(7,4)]:[
+                {
+                    events: [
+                        /*{who:"npcA", type:"walk", direction:"right"},
+                        {who:"npcA", type:"walk", direction:"right"},
+                        {who:"npcA", type:"walk", direction:"up"},
+                        {who:"npcA", type:"walk", direction:"up"},
+                        {who:"npcA", type:"walk", direction:"up"},
+                        {who:"npcA", type:"walk", direction:"up"},
+                        {who:"npcA", type:"walk", direction:"left"},
+                        {who:"npcA", type:"walk", direction:"left"}, */
+                        { type:"textMessage", text:"You win"},
+                    ]
+                }
+            ] 
+        }
+
       },
      
 }
