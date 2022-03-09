@@ -20,6 +20,12 @@ const utils = {
       }
       return {x,y};
     },
+    oppositeDirection(direction) {
+      if (direction === "left") { return "right" }
+      if (direction === "right") { return "left" }
+      if (direction === "up") { return "down" }
+      return "up"
+    },
     // short hand for person.js 
     emitEvent( name, detail){
       //if 0 then we finished the walk and will know its done moving

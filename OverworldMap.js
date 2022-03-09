@@ -44,10 +44,23 @@ class OverworldMap {
 
     this.isCutscenePlaying = false;
 
+    // have them resume their dumb loops
     Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
 
 
   }
+
+checkForActionCutscene() {
+    const hero = this.gameObjects["hero"];
+    //we are gonna use the utils.nextPlace to determine if there is a person to talk to infront of the player controlled character
+    const nextCoords = utils.nextPlace(hero.x, hero.y, hero.direction);
+    const match = Object.values(this.gameObjects).find(object =>{
+        return `${object.x}, ${object.y}` === `${nextCoords.x}, ${nextCoords.y}`
+    });
+    if (!this.isCutscenePlaying && match && match.talking.length) {
+        this.startCutscene(match.talking[0].events)
+    }
+ }
 
 
 
@@ -81,8 +94,8 @@ moveWall(wasX, wasY, direction) {
 
 
 
-
 }
+
 
 //this is where configs for the images go VVVV
 window.OverworldMaps = {
@@ -104,7 +117,21 @@ window.OverworldMaps = {
                     {type: "stand", direction: "down", time:800},
                     {type: "stand", direction: "right", time:800},
                     {type: "stand", direction: "up", time:800},
-                ]
+                ],
+                talking: [
+                    {
+                        events: [
+                            { type: "textMessage", text: "you gotta escape", faceHero:"npcA"},
+                            { type: "textMessage", text: "Go away"},
+                            {who: "hero", type: "walk", direction: "up"},
+                        ]
+                    },
+                    {
+                    events: [
+                        { type: "textMessage", text: "somethi nelse"},
+                    ]
+                }
+                ],
           
             }),
             npcB: new Person({
