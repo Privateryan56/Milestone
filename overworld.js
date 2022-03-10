@@ -59,6 +59,11 @@ class Overworld {
       })
     }
 
+    startMap(){
+      
+    }
+
+
     init() {
      this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
      this.map.mountObjects();

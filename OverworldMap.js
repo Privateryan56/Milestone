@@ -213,8 +213,8 @@ window.OverworldMaps = {
             [utils.asGridCoords(7,4)]:[
                 {
                     events: [
-                        
-                        { type:"textMessage", text:"You win"},
+                        { type:"textMessage", text:"Damn, you really listened to the guy running in circles on how to get out?"},
+                        {who: "hero", type: "walk", direction: "down"},
                     ]
                 }
             ] ,
@@ -227,6 +227,13 @@ window.OverworldMaps = {
 
                     ]
                 },
+            ],
+            [utils.asGridCoords(5,10)] :[
+                {
+                    events: [
+                        {type: "textMessage", text:"You are now the real Winner Winner Chicken Dinner"}
+                    ]
+                }
             ]
         },
 
