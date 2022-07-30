@@ -1,24 +1,48 @@
-/* Error: Undefined mixin.
- *    ,
- * 3  | /     @include root{
- * 4  | |         $border-color: #291D4D;
- * 5  | |         $dialog-background: #FFF3B4;
- * 6  | |         
- * 7  | |         $menu-background: #FFE8D2;
- * 8  | |         $menu-border-color: #A48465;
- * 9  | |         $menu-font-color: #3A160D;
- * 10 | |         $menu-selected-background: #7fc2ff;
- * 11 | \     }
- *    '
- *   scss\textmessage.scss 3:5  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a    \2577 \a 3  \2502  \250c      @include root{\a 4  \2502  \2502          $border-color: #291D4D;\a 5  \2502  \2502          $dialog-background: #FFF3B4;\a 6  \2502  \2502          \a 7  \2502  \2502          $menu-background: #FFE8D2;\a 8  \2502  \2502          $menu-border-color: #A48465;\a 9  \2502  \2502          $menu-font-color: #3A160D;\a 10 \2502  \2502          $menu-selected-background: #7fc2ff;\a 11 \2502  \2514      }\a    \2575 \a   scss\\textmessage.scss 3:5  root stylesheet";
+* {
+  box-sizing: border-box;
 }
+* body {
+  background: orange;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+* .game-container {
+  position: relative;
+  width: 352px;
+  height: 198px;
+  margin: 0 auto;
+  outline: 1px solid #fff;
+  transform: scale(3) translateY(50%);
+}
+* .game-container canvas {
+  image-rendering: pixelated;
+}
+
+.TextMessage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36px;
+  padding: 4px;
+}
+.TextMessage .TextMessage_p {
+  margin: 0;
+  font-size: 12px;
+}
+.TextMessage .TextMessage_button {
+  margin: 0;
+  font-size: 8px;
+  padding: 0;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+}
+
+/*# sourceMappingURL=textmessage.css.map */
